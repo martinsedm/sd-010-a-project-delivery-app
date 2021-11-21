@@ -15,6 +15,15 @@ const inputAddress = 'ustomer_checkout__input-address';
 const inputAddressNumber = 'customer_checkout__input-addressNumber';
 const buttonSubmitOrder = 'customer_checkout__button-submit-order';
 
+/*
+const oderListExemple = [ // Apenas como exemplo, deve ser excluído apos funcionalidade
+  { productId: 1, name: 'cerveja', quantity: 10, price: 8 },
+  { productId: 2, name: 'cachaça', quantity: 2, price: 10 },
+  { productId: 3, name: 'vinho', quantity: 1, price: 60 },
+  { productId: 4, name: 'whisk', quantity: 5, price: 80 },
+];
+*/
+
 export default function DeliveryDetails() {
   const { userId } = useContext(NewOrderContext);
   const { sellersList, setSellersList } = useContext(NewOrderContext);
