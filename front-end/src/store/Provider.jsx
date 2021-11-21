@@ -5,8 +5,9 @@ import ContextDeliveryApp from './ContextDeliveryApp';
 export default function Provider({ children }) {
   const [user, setUser] = useState({});
   const [products, setProducts] = useState([]);
+  const [sales, setSales] = useState([]);
 
-  const contextValue = { user, setUser, products, setProducts };
+  const contextValue = { user, setUser, products, setProducts, sales, setSales };
 
   return (
     <ContextDeliveryApp.Provider value={ contextValue }>

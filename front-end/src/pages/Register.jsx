@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-// import { Redirect } from 'react-router-dom';
+import ContextDeliveryApp from '../store/ContextDeliveryApp';
 import RegisterErrorMessage from './components/RegisterErrorMessage';
 import checkEmail from '../services/checkEmail';
 import checkPassword from '../services/checkPassword';
@@ -13,6 +13,8 @@ function Register({ history }) {
   const [password, setPassword] = useState('');
   const [enableBtn, setEnableBtn] = useState(true);
   const [registerError, setRegisterError] = useState('');
+
+  const { setUser } = useContext(ContextDeliveryApp);
 
   useEffect(() => {
     if (checkEmail(email) && checkPassword(password) && checkName(name)) {
@@ -29,6 +31,7 @@ function Register({ history }) {
     setRegisterError(response.message);
     if (!response.message) {
     //  localStorage.setItem('user', JSON.stringify(response));
+      setUser(response);
       return history.push('/customer/products');
     }
   };

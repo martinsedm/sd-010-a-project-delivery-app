@@ -24,6 +24,7 @@ const register = async (name, email, password) => {
               name: userRegistred.dataValues.name,
               email: userRegistred.dataValues.email,
               password: userRegistred.dataValues.password,
+              role: userRegistred.dataValues.role,
           } };
 };
 

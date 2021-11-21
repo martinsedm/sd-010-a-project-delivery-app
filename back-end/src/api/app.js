@@ -27,7 +27,7 @@ app.post('/login', checkEmail, checkPassword, userControllers.login);
 app.post('/register', checkName, checkEmail, checkPassword, userControllers.register);
 
 app.get('/users', userControllers.getAllUsers);
-app.get('/products', validateToken, productControllers.getAllProducts);
+app.get('/products', productControllers.getAllProducts);
 app.get('/images/:name', uploadImages.single('image'));
 app.use('/images', express.static(path.join(__dirname, '../..', 'public')));
 
