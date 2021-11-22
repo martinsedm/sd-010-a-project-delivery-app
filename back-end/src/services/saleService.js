@@ -42,7 +42,13 @@ const getSales = async () => {
   return { status: 201, message: { saleDone } };
 };
 
+const getSellerSales = async (sellerId) => {
+  const sellerSales = await database.sale.findAll({ where: { sellerId }, raw: true });
+  return { status: 201, message: { sellerSales } };
+};
+
 module.exports = {
   register,
   getSales,
+  getSellerSales,
 };

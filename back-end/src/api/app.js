@@ -52,4 +52,6 @@ app.post('/addUser',
   checkPassword,
   userControllers.addNewUser);
 
+app.post('/sellerSale', validateToken, saleControllers.getSellerSales);
+
 module.exports = app;

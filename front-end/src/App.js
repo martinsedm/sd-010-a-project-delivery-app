@@ -8,7 +8,11 @@ import AdminUsers from './pages/AdminUsers';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
+
 import CustomerOrderDetails from './pages/CustomerOrderDetails';
+
+import SellerOrders from './pages/SellerOrders';
+// import CustomerOrders from './pages/CustomerOrders';
 
 function App() {
   return (
@@ -27,7 +31,7 @@ function App() {
           <Route exact path="/customer/orders/:id" component={ CustomerOrderDetails } />
 
           <Route exact path="/admin/manage" component={ AdminUsers } />
-
+          <Route exact path="/seller/orders" component={ SellerOrders } />
         </Switch>
       </BrowserRouter>
     </div>
