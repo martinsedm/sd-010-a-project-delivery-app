@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import ContextDeliveryApp from '../store/ContextDeliveryApp';
+
 
 function CustomerOrderDetails() {
-  return (
+  const { user, sales, setSales } = useContext(ContextDeliveryApp);
+  const [isLoading, setIsLoading] = useState(true);
+
+
+  const firstLine = async () => (
     <div>
       <h2>Detalhe do Pedido</h2>
       <div>
@@ -30,28 +36,6 @@ function CustomerOrderDetails() {
           data-testid="customer_order_details__button-delivery-check"
         >
           Marcar como entregue
-        </p>
-      </div>
-      <div>
-        <p>Item</p>
-        <p data-testid="customer_order_details__element-order-table-item-number-">
-          1
-        </p>
-        <p>Descricao</p>
-        <p data-testid="customer_order_details__element-order-table-name-">
-          Cerveja Stella 250ml
-        </p>
-        <p>Quantidade</p>
-        <p data-testid="customer_order_details__element-order-table-quantity-">
-          3
-        </p>
-        <p>Valor Unitário</p>
-        <p data-testid="customer_order_details__element-order-table-sub-total-">
-          R$3,50
-        </p>
-        <p>Sub-total</p>
-        <p data-testid="customer_order_details__element-order-total-price-">
-          R$10,50
         </p>
       </div>
     </div>

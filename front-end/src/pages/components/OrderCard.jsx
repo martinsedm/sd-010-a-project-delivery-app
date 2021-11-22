@@ -2,48 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-/* customerOrders */
-function OrderCard() {
-//  const maxLength = 10;
+export default function OrderCard({ sale }) {
+  const { id, totalPrice, status, sale_date: saleDate } = sale;
+
   return (
-    <div>
-      {
-        //   customerOrders.slice(0, maxLength).map((order, index) => (
-        <Link to="customer/orders/1">
-          <div>
-            <span>Pedido</span>
-            <p
-              id="name-input"
-              data-testeid={ `customer_orders__element-order-id-${1}` }
-            >
-              {/* order.id */}
-              PEDIDO 0001
-            </p>
-            <p
-              data-testeid={ `customer_orders__element-delivery-status-${1}` }
-            >
-              {/* order.statusOrder */}
-              Preparando
-            </p>
-            <p
-              data-testid={ `customer_orders__element-order-date-${1}` }
-            >
-              {/* order.orderDate */}
-              08/04/21
-            </p>
-            <p>
-              {/* order.price */}
-              R$23,80
-            </p>
-          </div>
-        </Link>
-      }
-    </div>
+    <Link to={ `/customer/orders/${id}` }>
+      <div>
+        <p data-testid={ `customer_orders__element-order-id-${id}` }>
+          {`Pedido ${id}`}
+        </p>
+        <p data-testid={ `customer_orders__element-delivery-status-${id}` }>
+          {status}
+        </p>
+        <p data-testid={ `customer_orders__element-order-date-${id}` }>
+          {saleDate}
+        </p>
+        <p>{totalPrice}</p>
+      </div>
+    </Link>
   );
 }
 
 OrderCard.propTypes = {
-  customerOrders: PropTypes.arrayOf,
-}.isRequired;
-
-export default OrderCard;
+  sale: PropTypes.shape({
+    status: PropTypes.string.isRequired,
+    sale_date: PropTypes.string.isRequired,
+    totalPrice: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+  }).isRequired,
+};

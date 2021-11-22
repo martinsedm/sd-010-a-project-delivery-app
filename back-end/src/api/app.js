@@ -5,12 +5,15 @@ const path = require('path');
 
 const userControllers = require('../controllers/userControllers');
 const productControllers = require('../controllers/productControllers');
+const saleControllers = require('../controllers/saleControllers');
 
 const { checkEmail } = require('../middlewares/checkEmail');
 const { checkPassword } = require('../middlewares/checkPassword');
 const { validateToken } = require('../middlewares/validateToken');
 const { checkName } = require('../middlewares/checkName');
+const validateAddress = require('../middlewares/validateAddress');
 const uploadImages = require('../middlewares/uploadImages');
+const validateAdmin = require('../middlewares/validateAdmin');
 
 const corsOptions = {
   origin: '*',
@@ -27,8 +30,26 @@ app.post('/login', checkEmail, checkPassword, userControllers.login);
 app.post('/register', checkName, checkEmail, checkPassword, userControllers.register);
 
 app.get('/users', userControllers.getAllUsers);
+
 app.get('/products', productControllers.getAllProducts);
+
 app.get('/images/:name', uploadImages.single('image'));
 app.use('/images', express.static(path.join(__dirname, '../..', 'public')));
+
+app.get('/sellers', validateToken, userControllers.getAllSellers);
+
+app.post('/sale',
+  validateToken,
+  validateAddress,
+  saleControllers.register);
+
+app.get('/saleDone', validateToken, saleControllers.getSales);
+app.post('/addUser',
+  validateToken,
+  validateAdmin,
+  checkEmail,
+  checkName,
+  checkPassword,
+  userControllers.addNewUser);
 
 module.exports = app;

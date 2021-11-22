@@ -12,8 +12,19 @@ const register = async (req, res) => {
   res.status(response.status).json(response.message);
 };
 
+const addNewUser = async (req, res) => {
+  const { name, email, password, role } = req.body;
+  const response = await userServices.addNewUser(name, email, password, role);
+  res.status(response.status).json(response.message);
+};
+
 const getAllUsers = async (_req, res) => {
   const response = await userServices.getAllUsers();
+  return res.status(response.status).json(response.message);
+};
+
+const getAllSellers = async (_req, res) => {
+  const response = await userServices.getAllSellers();
   return res.status(response.status).json(response.message);
 };
 
@@ -21,4 +32,6 @@ module.exports = {
   login,
   register,
   getAllUsers,
+  getAllSellers,
+  addNewUser,
 };
