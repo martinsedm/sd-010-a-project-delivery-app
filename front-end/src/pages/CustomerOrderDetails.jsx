@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+/* import React, { useContext, useEffect, useState } from 'react';
 import ContextDeliveryApp from '../store/ContextDeliveryApp';
-
 
 function CustomerOrderDetails() {
   const { user, sales, setSales } = useContext(ContextDeliveryApp);
   const [isLoading, setIsLoading] = useState(true);
-
 
   const firstLine = async () => (
     <div>
@@ -43,3 +41,4 @@ function CustomerOrderDetails() {
 }
 
 export default CustomerOrderDetails;
+*/
