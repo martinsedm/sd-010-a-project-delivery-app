@@ -73,10 +73,6 @@ export default function DeliveryDetails() {
     // await postSales(obj);
   };
 
-  useEffect(() => {
-    console.log(sellerId);
-  }, [sellerId]);
-
   return (
     <div>
       <span>
