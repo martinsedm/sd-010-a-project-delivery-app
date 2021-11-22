@@ -1,9 +1,8 @@
-/* import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext/* useEffect  useState */ } from 'react';
 import ContextDeliveryApp from '../store/ContextDeliveryApp';
 
 function CustomerOrderDetails() {
-  const { user, sales, setSales } = useContext(ContextDeliveryApp);
-  const [isLoading, setIsLoading] = useState(true);
+  const { sales } = useContext(ContextDeliveryApp);
 
   const firstLine = async () => (
     <div>
@@ -12,33 +11,38 @@ function CustomerOrderDetails() {
         <p
           data-testid="customer_order_details__element-order-details-label-order-id"
         >
-          PEDIDO 0003
+          {`PEDIDO ${sales.id}`}
         </p>
         <p
           data-testid="customer_order_details__element-order-details-label-seller-name"
         >
-          P.Vend: Fulana Pereira
+          {` P.Vend: ${sales.saleDate}`}
         </p>
         <p
           data-testid="customer_order_details__element-order-details-label-order-date"
         >
-          07/04/2021
+          {sales.saleDate}
         </p>
         <p
           data-testid="customer_order_details__element-order-
           details-label-delivery-status"
         >
-          ENTREGUE
+          {sales.status}
         </p>
-        <p
+        <button
+          type="button"
+          disabled
           data-testid="customer_order_details__button-delivery-check"
         >
           Marcar como entregue
-        </p>
+        </button>
       </div>
     </div>
+  );
+
+  return (
+    firstLine()
   );
 }
 
 export default CustomerOrderDetails;
-*/

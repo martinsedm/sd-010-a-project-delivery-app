@@ -15,9 +15,9 @@ export default function OrderCard({ sale }) {
           {status}
         </p>
         <p data-testid={ `customer_orders__element-order-date-${id}` }>
-          {saleDate}
+          {saleDate.split('T')[0].split('-').reverse().join('/')}
         </p>
-        <p>{totalPrice}</p>
+        <p>{`${totalPrice.replace('.', ',')}`}</p>
       </div>
     </Link>
   );
