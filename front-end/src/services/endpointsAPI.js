@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const PORT = 3001;
+const port = 3001;
+
+const PORT = process.env.PORT || port;
 
 const api = axios.create({
   baseURL: `http://localhost:${PORT}`,
@@ -20,7 +22,7 @@ export const createNewUserByAdmin = async (obj) => {
   const { name, email, password, role, token } = obj;
   const apiForAdm = axios.create({
     baseURL: `http://localhost:${PORT}`,
-    headers: { authentication: token },
+    headers: { authorization: token },
   });
   const result = await apiForAdm.post('/users/createbyadmin',
     { name, email, password, role });
@@ -64,6 +66,12 @@ export const getSales = async () => {
 
 export const postSales = async (obj) => { // obj = { userId, totalPrice, deliveryAddress, deliveryNumber, status }
   const result = await api.post('/sales', obj);
+  return result.data;
+};
+
+export const createInSalesAndSalesProducts = async (sale, salesProductsArray) => {
+  const data = { sale, salesProductsArray };
+  const result = await api.post('/sales/createsale', data);
   return result.data;
 };
 
