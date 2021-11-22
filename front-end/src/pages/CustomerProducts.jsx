@@ -99,4 +99,3 @@ export default function CustomerProducts() {
     </div>
   );
 }
-// <CardProduct dataTestIdError={ testId } message={ messageError }/>
