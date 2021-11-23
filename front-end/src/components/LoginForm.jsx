@@ -20,7 +20,15 @@ export default function Auth() {
       formSchema: loginSchema,
       formValues: inputsValues,
       authType: 'login',
-    }, () => history.push('/customer/products'));
+    }, ({ role }) => {
+      switch (role) {
+      case 'seller': history.push('/seller/orders');
+        break;
+      case 'administrator': history.push('/admin/manage');
+        break;
+      default: history.push('/customer/products');
+      }
+    });
   }
 
   return (
